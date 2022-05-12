@@ -9,6 +9,8 @@ from spotipy.oauth2 import SpotifyClientCredentials
 def read_data(file):
     '''
     Purpose: Reads in the csv file at pathname 'file' parameter. Turns the csv into a data frame and returns
+    Input: 'file' - String pathname
+    Return: 'df'  - Pandas dataframe
     '''
     data = pd.read_csv(file)
     return data
@@ -17,6 +19,10 @@ def add_popularity(df):
     '''
     Purpose: This file takes a df containing dates, concerts and performing artist(s) and adds a column
     titled 'Mean Popularity' which is the mean of each artist's popularity
+    Input: 'df'  - Pandas dataframe, formatted with an 'Artists' column. Multiple artists per row separated
+                   by a comma and no white space (unless intended to be part of artist name.
+                   Ex: Luke Brycan,Drake
+    Return: 'df' - Pandas dataframe
     '''
     artist_list = [i.split(",") for i in df['Artist']]
     popularity = []
@@ -28,6 +34,8 @@ def add_popularity(df):
 def calc_popularity(artist):
     '''
     Purpose: This function calculates the popularity of an artist given their name
+    Input: 'artist' - String object, name of the artist whos popularity will be calculated
+    Output: A float valued number 0-100 representing artist popularity
     '''
     print(artist)
     cid = # cid
